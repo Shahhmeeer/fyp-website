@@ -5,11 +5,14 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 const apiKey = "AIzaSyBbNrOdILln0q3s0_OVoqnmPIgo7JMYDuM";
 
 export default function LoginOrSignup() {
+  const router = useRouter();
+
   const [loading, setLoading] = useState(false);
   const signUserUp = async () => {
     try {
@@ -22,11 +25,19 @@ export default function LoginOrSignup() {
       const userDetails = {
         email: email,
         password: password,
+        returnSecureToken: true,
       };
-      const response = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${apiKey}`, { method: "POST", body: JSON.stringify(userDetails) });
-      console.log("response: ", response.status);
-    } catch {
-      console.log("there was an error");
+      const response = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${apiKey}`, {
+        method: "POST",
+        body: JSON.stringify(userDetails),
+        headers: { "Content-Type": "application/json" },
+      });
+
+      const res = response.json;
+      console.log("res: ", JSON.stringify(res));
+      router.push("/home");
+    } catch (error) {
+      console.log("there was an error: ", error);
       setLoading(false);
     } finally {
       setLoading(false);
@@ -44,9 +55,11 @@ export default function LoginOrSignup() {
       const userDetails = {
         email: email,
         password: password,
+        returnSecureToken: true,
       };
       const response = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey}`, { method: "POST", body: JSON.stringify(userDetails) });
       console.log("response: ", response.status);
+      router.push("/home");
     } catch (error) {
       console.log("there was an error: ", error);
       setLoading(false);

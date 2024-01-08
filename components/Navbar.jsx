@@ -1,14 +1,14 @@
 import Link from "next/link";
 
 export default function Header() {
-  const navItems = ["Home", "About Us", "Cart", "Profile"];
-  const navLinks = ["/", "/about", "/cart", "/profile"];
+  const navItems = ["Home", "Cart", "Add New Product", "Profile"];
+  const navLinks = ["/home", "/cart", "/newProduct", "/profile"];
   return (
-    <header className="sticky top-0 bg-primary text-secondary" style={{ height: "7dvh" }}>
+    <header className="sticky top-0 backdrop-blur-xl" style={{ height: "7dvh", backgroundColor: "rgba(0, 94, 0, 0.75)" }}>
       <div className="header-content flex justify-between items-center h-full max-w-7xl mx-auto">
         {/* Logo */}
         <div>
-          <h1 className="text-3xl font-mono">PlantE</h1>
+          <h1 className="text-3xl font-extrabold text-green-100">PlantE</h1>
         </div>
         {/* Actions */}
         <div>
@@ -16,7 +16,9 @@ export default function Header() {
             <ul className="flex space-x-8">
               {navItems.map((navItem, index) => (
                 <li key={index}>
-                  <Link href={navLinks[index]} className="hover:underline">{navItem}</Link>
+                  <Link href={navLinks[index]} className="hover:bg-green-50 text-green-100 hover:text-black p-2 rounded-sm">
+                    {navItem}
+                  </Link>
                 </li>
               ))}
             </ul>
