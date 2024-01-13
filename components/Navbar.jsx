@@ -1,8 +1,8 @@
 import Link from "next/link";
 
 export default function Header() {
-  const navItems = ["Home", "Cart", "Add New Product", "Profile"];
-  const navLinks = ["/home", "/cart", "/newProduct", "/profile"];
+  const navItems = ["Home", "Cart", "Add New Product", "Profile", "Support"];
+  const navLinks = ["/home", "/cart", "/newProduct", "/profile", "/support"];
   return (
     <header className="sticky top-0 backdrop-blur-xl" style={{ height: "7dvh", backgroundColor: "rgba(0, 94, 0, 0.75)" }}>
       <div className="header-content flex justify-between items-center h-full max-w-7xl mx-auto">

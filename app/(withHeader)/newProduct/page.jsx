@@ -2,7 +2,7 @@
 
 export default function AddNewProduct() {
   async function handleSubmit(event) {
-    event.preventDefault();
+    // event.preventDefault();
     const formData = new FormData(event.target);
     const name = formData.get("name");
     const price = parseFloat(formData.get("price"));
@@ -30,7 +30,7 @@ export default function AddNewProduct() {
       <input type="number" placeholder="$9.99" id="price" name="price" required /> <br />
       <label htmlFor="description">Product Description</label>
       <textarea name="description" id="description" rows="10" placeholder="what is this product" required></textarea> <br />
-      <input type="submit" value="Add Product" className="bg-green-300 cursor-pointer font-bold text-green-800" />
+      <input type="submit" value="Add Product" className="bg-green-800 cursor-pointer font-bold text-green-300 mb-10" />
     </form>
   );
 }
