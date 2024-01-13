@@ -3,7 +3,7 @@ function SalesforceForm() {
     <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00D5i00000DTYWU"
     method="POST" className="flex flex-col items-center max-w-xs mx-auto sm:max-w-xl mt-4">
       <input type="hidden" name="oid" value="00D5i00000DTYWU" />
-      <input type="hidden" name="retURL" value="https://www.google.com" />
+      <input type="hidden" name="retURL" value="https://plantstore-ten.vercel.app/thankyou" />
       <label htmlFor="first_name">First Name</label>
       <input id="first_name" maxLength="40" name="first_name" size="20" type="text" />
       <label htmlFor="last_name">Last Name</label>
